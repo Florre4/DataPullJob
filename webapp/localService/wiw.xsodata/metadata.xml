@@ -1,0 +1,48 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="com.wieiswie.v1.wiw">
+            <EntityType Name="PersonType">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HOOFDPERNR"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" DefaultValue="000" MaxLength="3"/>
+                <Property Name="HOOFDPERNR" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="8"/>
+                <Property Name="FAMNAAM" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="40"/>
+                <Property Name="VOORNAAM" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="40"/>
+                <Property Name="TITEL" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="15"/>
+                <Property Name="GSMNUMMER" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="14"/>
+                <Property Name="URL_FOTO" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="200"/>
+                <NavigationProperty Name="Email" Relationship="com.wieiswie.v1.wiw.EmailAdressesType" FromRole="PersonPrincipal" ToRole="EmailDependent"/>
+            </EntityType>
+            <EntityType Name="EmailType">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HOOFDPERNR"/>
+                    <PropertyRef Name="SEQNR"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" DefaultValue="000" MaxLength="3"/>
+                <Property Name="HOOFDPERNR" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="8"/>
+                <Property Name="SEQNR" Type="Edm.String" Nullable="false" DefaultValue="000" MaxLength="3"/>
+                <Property Name="MAILADRES" Type="Edm.String" Nullable="false" DefaultValue="" MaxLength="60"/>
+            </EntityType>
+            <Association Name="EmailAdressesType">
+                <End Type="com.wieiswie.v1.wiw.PersonType" Role="PersonPrincipal" Multiplicity="1"/>
+                <End Type="com.wieiswie.v1.wiw.EmailType" Role="EmailDependent" Multiplicity="*"/>
+            </Association>
+            <EntityContainer Name="wiw" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="Person" EntityType="com.wieiswie.v1.wiw.PersonType"/>
+                <EntitySet Name="Email" EntityType="com.wieiswie.v1.wiw.EmailType"/>
+                <AssociationSet Name="EmailAdresses" Association="com.wieiswie.v1.wiw.EmailAdressesType">
+                    <End Role="PersonPrincipal" EntitySet="Person"/>
+                    <End Role="EmailDependent" EntitySet="Email"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

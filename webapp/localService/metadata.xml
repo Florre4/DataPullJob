@@ -1,0 +1,26 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="com.wieiswie.v1.test">
+            <EntityType Name="TESTType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="EMAIL" Type="Edm.String" MaxLength="30"/>
+                <Property Name="NAME" Type="Edm.String" MaxLength="30"/>
+                <Property Name="SURNAME" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AGE" Type="Edm.String" MaxLength="3"/>
+                <Property Name="ADDRESS" Type="Edm.String" MaxLength="50"/>
+                <Property Name="MANDT" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityContainer Name="test" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="TEST" EntityType="com.wieiswie.v1.test.TESTType"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

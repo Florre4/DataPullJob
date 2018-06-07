@@ -1,0 +1,51 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="com.wieiswie.v1.wiw" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="PersonType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HOOFDPERNR"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="HOOFDPERNR" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="FAMNAAM" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="VOORNAAM" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="TITEL" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="GSMNUMMER" Type="Edm.String" Nullable="false" MaxLength="14"/>
+                <Property Name="URL_FOTO" Type="Edm.String" Nullable="false" MaxLength="200"/>
+                <NavigationProperty Name="Email" Relationship="com.wieiswie.v1.wiw.EmailAdressesType" FromRole="FromRole_EmailAdressesType" ToRole="ToRole_EmailAdressesType"/>
+            </EntityType>
+            <EntityType Name="EmailType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MANDT"/>
+                    <PropertyRef Name="HOOFDPERNR"/>
+                    <PropertyRef Name="SEQNR"/>
+                </Key>
+                <Property Name="MANDT" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="HOOFDPERNR" Type="Edm.String" Nullable="false" MaxLength="8"/>
+                <Property Name="SEQNR" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="MAILADRES" Type="Edm.String" Nullable="false" MaxLength="60"/>
+            </EntityType>
+            <Association Name="EmailAdressesType" sap:content-version="1">
+                <End Type="com.wieiswie.v1.wiw.PersonType" Multiplicity="1" Role="FromRole_EmailAdressesType"/>
+                <End Type="com.wieiswie.v1.wiw.EmailType" Multiplicity="*" Role="ToRole_EmailAdressesType"/>
+            </Association>
+            <EntityContainer Name="com.wieiswie.v1.wiw_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Person" EntityType="com.wieiswie.v1.wiw.PersonType" sap:content-version="1"/>
+                <EntitySet Name="Email" EntityType="com.wieiswie.v1.wiw.EmailType" sap:content-version="1"/>
+                <AssociationSet Name="EmailAdresses" Association="com.wieiswie.v1.wiw.EmailAdressesType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Person" Role="FromRole_EmailAdressesType"/>
+                    <End EntitySet="Email" Role="ToRole_EmailAdressesType"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZHS_WIW_ODATA_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZHS_WIW_ODATA_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
