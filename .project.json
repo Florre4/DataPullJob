@@ -48,8 +48,8 @@
     "lastBuildDateTime": "Thu, 07 Jun 2018 15:40:05 GMT"
   },
   "mockpreview": {
-    "mockUri": "/com/wieiswie/v1/test.xsodata/",
-    "metadataFilePath": "localService/metadata.xml",
+    "mockUri": "/sap/opu/odata/sap/ZHS_WIW_ODATA_SRV/",
+    "metadataFilePath": "localService/ZHS_WIW_ODATA_SRV/metadata.xml",
     "loadJSONFiles": false,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
