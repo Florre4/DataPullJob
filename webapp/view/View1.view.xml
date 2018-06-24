@@ -1,18 +1,18 @@
-<mvc:View controllerName="DataPullJob.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true" 
-	xmlns="sap.m"
-	>
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="DataPullJob.controller.View1"
+	displayBlock="true">
 	<App>
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
-						<Button type="Accept"
-						text="Accept"
-						press="onPress">
-						<layoutData>
-						<FlexItemData growFactor="1" />
-					</layoutData>
-				</Button>
+					<FlexBox width="100%" id="__box0">
+						<items>
+							<Button xmlns="sap.m" type="Accept" text="get" press="getData"></Button>
+							<Button xmlns="sap.m" type="Accept" text="post" press="postData"/>
+							<Button xmlns="sap.m" type="Accept" text="cleanUpCloud" press="onCleanUp"/>
+						</items>
+					</FlexBox>
+					<List headerText="New people to be copied to on-premise" id="personList"/>
+					<!--<List headerText="People that were copied" id="postedList"/>-->
 				</content>
 			</Page>
 		</pages>

@@ -44,7 +44,8 @@
     "sourceFolder": "webapp",
     "targetFolder": "dist",
     "excludedFolders": [],
-    "excludedFiles": []
+    "excludedFiles": [],
+    "lastBuildDateTime": "Thu, 07 Jun 2018 15:40:05 GMT"
   },
   "mockpreview": {
     "mockUri": "/com/wieiswie/v1/test.xsodata/",
@@ -52,5 +53,10 @@
     "loadJSONFiles": false,
     "loadCustomRequests": false,
     "mockRequestsFilePath": ""
+  },
+  "hcpdeploy": {
+    "account": "p1942965195trial",
+    "name": "datapulljob",
+    "lastVersionWeTriedToDeploy": "1.0.0"
   }
 }

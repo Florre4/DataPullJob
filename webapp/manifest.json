@@ -14,14 +14,6 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"test.xsodata": {
-				"uri": "/com/wieiswie/v1/test.xsodata/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			},
 			"ZHS_WIW_ODATA_SRV": {
 				"uri": "/sap/opu/odata/sap/ZHS_WIW_ODATA_SRV/",
 				"type": "OData",
@@ -92,7 +84,7 @@
 					"defaultBindingMode": "OneTime",
 					"defaultCountMode": "Request"
 				},
-				"dataSource": "test.xsodata",
+				"dataSource": "wiw.xsodata",
 				"preload": true
 			},
 			"onPremiseModel": {
@@ -111,5 +103,9 @@
 				"uri": "css/style.css"
 			}]
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
